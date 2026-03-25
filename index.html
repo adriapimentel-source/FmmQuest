@@ -378,8 +378,8 @@
   <div class="badge"><span aria-hidden="true">&#129309;</span> Fase 3 — Redes de Apoio</div>
   <div class="card card-accent">
     <h2 class="screen-title" id="t3">Identificando Suas Redes de Apoio</h2>
-    <p class="screen-sub" style="text-align:justify">
-      O sistema identificou sua área mais crítica. Na FMM,
+    <p class="screen-sub" id="s3Intro" style="text-align:justify">
+      O sistema identificou sua(s) área(s) mais crítica(s). Na FMM,
       <strong>ninguém avança sozinho</strong>. Conhecer as pessoas e os recursos que podem te apoiar é uma das estratégias mais eficazes para superar desafios. É hora de mapear sua rede!
     </p>
     <div class="crit-box" id="critBox" aria-live="polite">
@@ -388,7 +388,7 @@
       <small id="critScore">Esta é sua maior oportunidade de crescimento</small>
     </div>
     <div class="fg">
-      <label class="flabel" for="critQ">
+      <label class="flabel" for="critQ" id="critQLabel">
         Por que você acha que essa área está com essa nota? O que acontece na sua rotina que explica isso?
         <small>(mínimo 30 palavras)</small>
       </label>
@@ -399,8 +399,8 @@
       <div class="ferr" id="critQErr" role="alert">&#9997; Precisa de mais profundidade! <em>O que especificamente acontece que gera esse resultado? Como isso impacta seu dia na escola? Há quanto tempo você sente isso?</em></div>
     </div>
     <div class="fg">
-      <label class="flabel" for="support">
-        Quem ou o que pode te ajudar a melhorar essa área? Liste pelo menos 3 recursos (pessoas, espaços, ferramentas): <abbr title="obrigatório">*</abbr>
+      <label class="flabel" for="support" id="supportLabel">
+        Quem ou o que pode te ajudar a melhorar essa área? Liste pelo menos 3 recursos (pessoas, espaços, ferramentas) de cada área crítica em destaque: <abbr title="obrigatório">*</abbr>
         <small>(mínimo 15 palavras)</small>
       </label>
       <textarea id="support" class="finput"
@@ -519,36 +519,15 @@
     <div class="mission-box"><h4>&#127919; Missão SMART desta Semana:</h4><p id="scMission">...</p></div>
     <p class="save-footer">&#128197; <span id="scDate"></span> &nbsp;|&nbsp; &#128300; Método SMART</p>
   </div>
-  <div class="card">
-    <h3 style="font-family:var(--f-head);color:var(--c-navy);margin-bottom:.75rem;">
-      &#128221; Reflexão Final <small style="font-weight:400;font-size:.85rem">(mínimo 20 palavras)</small>
-    </h3>
-    <p style="color:var(--c-sub);font-size:.88rem;margin-bottom:1rem">
-      Para fechar: o que você está levando dessa aula? Como ela mudou a forma como você
-      enxerga sua rotina na FMM?
-    </p>
-    <textarea id="finalRefl" class="finput"
-      placeholder="Escreva aqui sua reflexão final. O que você descobriu sobre você mesmo? Qual parte da aula fez mais sentido? O que vai fazer diferente a partir de agora?"
-      aria-describedby="finalErr finWc"></textarea>
-    <div class="wcount" id="finWc" aria-live="polite">0 palavras</div>
-    <div class="ferr" id="finalErr" role="alert">&#9997; Aprofunde sua reflexão! <em>O que você descobriu sobre si mesmo? Qual parte da aula teve mais impacto? O que vai mudar na sua rotina a partir de agora?</em></div>
-  </div>
-  <div class="auto-save-notice" id="autoSaveNotice" role="status" aria-live="polite" style="display:none;text-align:center;padding:.6rem 1rem;background:#e8f5e0;border-radius:8px;border:1.5px solid var(--c-dgreen);font-size:.83rem;color:var(--c-dgreen);margin-bottom:.75rem;font-weight:600;">
-    &#10003; Suas respostas foram salvas automaticamente até aqui. Escreva sua reflexão final e envie!
+  <div class="auto-save-notice" id="autoSaveNotice" role="status" aria-live="polite" style="text-align:center;padding:.75rem 1.1rem;background:#e8f5e0;border-radius:10px;border:1.5px solid var(--c-dgreen);font-size:.88rem;color:var(--c-dgreen);margin-bottom:1rem;font-weight:600;">
+    &#10003; Missão registrada automaticamente! Agora salve seu card.
   </div>
   <div class="btn-row" style="flex-direction:column;gap:.6rem;align-items:center;">
-    <button class="btn btn-navy" onclick="submit()" style="width:100%;max-width:400px;justify-content:center;"><span aria-hidden="true">&#9989;</span> Enviar Reflexão Final e Concluir</button>
     <div style="display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center">
       <button class="btn" style="background:var(--c-blue);color:#fff" onclick="saveCardAsPDF()"><span aria-hidden="true">&#128196;</span> Baixar Card em PDF</button>
       <button class="btn" style="background:#5c4a8a;color:#fff" onclick="saveCardAsImage()"><span aria-hidden="true">&#128248;</span> Salvar Card como Imagem</button>
     </div>
-    <p style="font-size:.78rem;color:var(--c-sub);text-align:center;margin-top:.25rem">&#128204; Você pode salvar o card agora. Mas não esqueça de <strong>enviar a reflexão final!</strong></p>
-  </div>
-  <div class="success-box" id="successBox" role="status" aria-live="polite">
-    <span class="big" aria-hidden="true">&#127881;</span>
-    <h3>Missão Registrada com Sucesso!</h3>
-    <p style="margin-top:.5rem">Suas respostas foram enviadas. Boa sorte na sua jornada na FMM!<br>
-    Lembre-se: você tem <strong>redes de apoio</strong> e uma <strong>missão SMART</strong> para essa semana. Use-os!</p>
+    <p style="font-size:.78rem;color:var(--c-sub);text-align:center;margin-top:.25rem">&#128204; Suas respostas já foram salvas. Baixe seu card para guardar de lembrança!</p>
   </div>
 </section>
 
@@ -556,7 +535,7 @@
 <script>
 var CFG = {
   SHEETS_URL: 'https://script.google.com/macros/s/AKfycbwCsey0j9_BZEmqUcOnA-L4BuW2TX5AQcVjJxR3YzXWPVloIjm6LXiVE0PnQWA2sd6b/exec',
-  MIN: { bReason:30, rRefl:30, critQ:30, support:15, finalRefl:20 }
+  MIN: { bReason:30, rRefl:30, critQ:30, support:15 }
 };
 
 var DIMS = [
@@ -614,7 +593,7 @@ function setupWC(inId,wcId){
   if(!inp||!wc) return;
   inp.addEventListener('input',function(){ var w=words(inp.value); wc.textContent=w+' palavra'+(w!==1?'s':''); var min=CFG.MIN[inId]||20; wc.className='wcount '+(w<min?'warn':'ok'); });
 }
-setupWC('bReason','bWc'); setupWC('rRefl','rWc'); setupWC('critQ','critQWc'); setupWC('support','supWc'); setupWC('finalRefl','finWc');
+setupWC('bReason','bWc'); setupWC('rRefl','rWc'); setupWC('critQ','critQWc'); setupWC('support','supWc');
 function chkField(inId,errId,minW){
   var v=document.getElementById(inId).value; var err=document.getElementById(errId);
   if(words(v)<minW){ err.classList.add('show'); document.getElementById(inId).focus(); document.getElementById(inId).style.borderColor='var(--c-err)'; return false; }
@@ -651,10 +630,10 @@ function go(n){
     document.getElementById('smartErr').classList.remove('show');
     ST.sm={s:s,m:m,a:a,r:r,t:t};
     try{ buildCard(); }catch(e){ console.warn('buildCard error:',e); }
-    try{ autoSubmit(); }catch(e){}
   }
   if(n===3) buildCrit();
   if(n===4) buildSMARTHints();
+  if(n===5){ try{ autoSubmit(); }catch(e){} }
   showScreen(n);
 }
 
@@ -732,35 +711,83 @@ function updSlider(i,v){
   document.getElementById('sl'+i).setAttribute('aria-label',DIMS[i].label+': nota '+v+' de 10');
   drawRadar('radarSvg',ST.radar,280);
   var mn=Math.min.apply(null,ST.radar),mx=Math.max.apply(null,ST.radar);
-  var mnI=ST.radar.indexOf(mn),mxI=ST.radar.indexOf(mx);
-  document.getElementById('radarDesc').textContent='Ponto forte: '+DIMS[mxI].label+' ('+mx+'/10) | Área crítica: '+DIMS[mnI].label+' ('+mn+'/10)';
+  var mxI=ST.radar.indexOf(mx);
+  var mnIdxs=[]; ST.radar.forEach(function(val,idx){ if(val===mn) mnIdxs.push(idx); });
+  var criticas=mnIdxs.map(function(idx){ return DIMS[idx].label; }).join(' e ');
+  document.getElementById('radarDesc').textContent='Ponto forte: '+DIMS[mxI].label+' ('+mx+'/10) | Área crítica: '+criticas+' ('+mn+'/10)';
 }
 
 buildSliders();
 
 /* ---- SCREEN 3 ---- */
 function buildCrit(){
-  var mn=Math.min.apply(null,ST.radar); var idx=ST.radar.indexOf(mn); ST.critIdx=idx;
-  document.getElementById('critEm').textContent=DIMS[idx].em;
-  document.getElementById('critName').textContent=DIMS[idx].label;
-  document.getElementById('critScore').textContent='Nota atual: '+mn+'/10 — maior oportunidade de crescimento';
+  var mn=Math.min.apply(null,ST.radar);
+  // Coleta TODOS os índices empatados no mínimo
+  var tiedIdxs=[];
+  ST.radar.forEach(function(v,i){ if(v===mn) tiedIdxs.push(i); });
+  ST.critIdxs=tiedIdxs;
+  ST.critIdx=tiedIdxs[0]; // compatibilidade retroativa
+
+  var box=document.getElementById('critBox');
+  var plural=tiedIdxs.length>1;
+  if(!plural){
+    // Sem empate — exibe normalmente
+    box.innerHTML=
+      '<span class="cem" id="critEm" aria-hidden="true">'+DIMS[tiedIdxs[0]].em+'</span>'+
+      '<h3 id="critName">'+DIMS[tiedIdxs[0]].label+'</h3>'+
+      '<small id="critScore">Nota atual: '+mn+'/10 — maior oportunidade de crescimento</small>';
+  } else {
+    // Empate — exibe todas as áreas empatadas na mesma estrutura
+    var tileHtml='';
+    tiedIdxs.forEach(function(idx){
+      tileHtml+=
+        '<div style="flex:1;min-width:110px;background:rgba(255,255,255,.12);border-radius:10px;padding:.85rem .65rem;">'+
+          '<span style="font-size:2.1rem;display:block;margin-bottom:.3rem" aria-hidden="true">'+DIMS[idx].em+'</span>'+
+          '<strong style="font-family:var(--f-head);font-size:1rem;color:var(--c-green);display:block">'+DIMS[idx].label+'</strong>'+
+        '</div>';
+    });
+    box.innerHTML=
+      '<p style="font-size:.75rem;color:rgba(255,255,255,.75);margin-bottom:.7rem;font-family:var(--f-head);letter-spacing:.6px;text-transform:uppercase">Empate — Áreas em destaque</p>'+
+      '<div style="display:flex;gap:.65rem;justify-content:center;flex-wrap:wrap;">'+tileHtml+'</div>'+
+      '<small style="display:block;margin-top:.8rem;opacity:.85;font-size:.85rem" id="critScore">Nota atual: '+mn+'/10 — trabalhe as duas áreas!</small>';
+  }
+  // Atualiza labels da Fase 3 para singular/plural
+  var lbQ=document.getElementById('critQLabel');
+  var lbS=document.getElementById('supportLabel');
+  if(lbQ){
+    lbQ.innerHTML=plural
+      ? 'Por que você acha que <strong>essas áreas estão</strong> com essa nota? O que acontece na sua rotina que explica cada uma delas? <small>(mínimo 30 palavras)</small>'
+      : 'Por que você acha que <strong>essa área está</strong> com essa nota? O que acontece na sua rotina que explica isso? <small>(mínimo 30 palavras)</small>';
+  }
+  if(lbS){
+    var numAreas=tiedIdxs.length;
+    lbS.innerHTML=plural
+      ? 'Quem ou o que pode te ajudar a melhorar <strong>essas áreas</strong>? Liste pelo menos 3 recursos (pessoas, espaços, ferramentas) de cada uma das '+numAreas+' áreas críticas em destaque: <abbr title="obrigatório">*</abbr> <small>(mínimo 15 palavras)</small>'
+      : 'Quem ou o que pode te ajudar a melhorar <strong>essa área</strong>? Liste pelo menos 3 recursos (pessoas, espaços, ferramentas) de cada área crítica em destaque: <abbr title="obrigatório">*</abbr> <small>(mínimo 15 palavras)</small>';
+  }
+  // Atualiza intro da tela 3
+  var intro=document.getElementById('s3Intro');
+  if(intro){
+    intro.innerHTML=plural
+      ? 'O sistema identificou suas <strong>'+numAreas+' áreas mais críticas</strong> (empatadas). Na FMM, <strong>ninguém avança sozinho</strong>. Conhecer as pessoas e os recursos que podem te apoiar é uma das estratégias mais eficazes para superar desafios. É hora de mapear sua rede para cada uma delas!'
+      : 'O sistema identificou sua <strong>área mais crítica</strong>. Na FMM, <strong>ninguém avança sozinho</strong>. Conhecer as pessoas e os recursos que podem te apoiar é uma das estratégias mais eficazes para superar desafios. É hora de mapear sua rede!';
+  }
 }
 
 /* ---- SCREEN 4 ---- */
 function buildSMARTHints(){
-  var areaLabel=DIMS[ST.critIdx].label;
-  var areaShort=DIMS[ST.critIdx].short;
-  // Grammatical gender for "meu/minha"
+  var idxs=ST.critIdxs||[ST.critIdx];
+  var areaLabel=idxs.map(function(i){ return DIMS[i].label; }).join(' e ');
+  // Para o exemplo ruim usa apenas a primeira área crítica
+  var areaShort=DIMS[idxs[0]].short;
   var masc=['Foco','Lazer'];
   var artigo=masc.indexOf(areaShort)>=0?'meu':'minha';
   var area=areaShort.toLowerCase();
-  // Update only the "meta vaga" bad example line
   var badLine=document.getElementById('exBadLine');
   if(badLine){
     badLine.innerHTML='&#10060; <strong>Meta vaga (não funciona):</strong><br>'
       +'<span style="padding-left:.5rem;font-style:italic">"Vou melhorar '+artigo+' '+area+'."</span>';
   }
-  // Update the area name shown before the form
   document.getElementById('smartArea').textContent=areaLabel;
 }
 function prevSMART(){
@@ -809,21 +836,12 @@ function buildCard(){
 
 /* ---- AUTO-SUBMIT (salva tudo até a penúltima fase) ---- */
 function autoSubmit(){
-  var data={timestamp:new Date().toISOString(),nome:ST.name,ra:ST.ra,turma:ST.turma,bateria:ST.batt,motivoBat:document.getElementById('bReason').value,radar:ST.radar.join(', '),areaCritica:DIMS[ST.critIdx].label,reflexRadar:document.getElementById('rRefl').value,analiseCrit:document.getElementById('critQ').value,redesApoio:document.getElementById('support').value,smartS:ST.sm.s,smartM:ST.sm.m,smartA:ST.sm.a,smartR:ST.sm.r,smartT:ST.sm.t,reflexFinal:'[aguardando reflexão final]',xpTotal:ST.xp};
+  var data={timestamp:new Date().toISOString(),nome:ST.name,ra:ST.ra,turma:ST.turma,bateria:ST.batt,motivoBat:document.getElementById('bReason').value,radar:ST.radar.join(', '),areaCritica:(ST.critIdxs||[ST.critIdx]).map(function(i){return DIMS[i].label;}).join(' e '),reflexRadar:document.getElementById('rRefl').value,analiseCrit:document.getElementById('critQ').value,redesApoio:document.getElementById('support').value,smartS:ST.sm.s,smartM:ST.sm.m,smartA:ST.sm.a,smartR:ST.sm.r,smartT:ST.sm.t,reflexFinal:'',xpTotal:ST.xp};
   if(CFG.SHEETS_URL&&CFG.SHEETS_URL!=='YOUR_GOOGLE_APPS_SCRIPT_URL_HERE'){ fetch(CFG.SHEETS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).catch(function(){}); }
-  // Mostra aviso de auto-save para o estudante
-  var notice=document.getElementById('autoSaveNotice');
-  if(notice){ notice.style.display='block'; }
+  // Aviso sempre visível na tela 5
 }
 
-/* ---- SUBMIT FINAL (salva reflexão final) ---- */
-function submit(){
-  if(!chkField('finalRefl','finalErr',CFG.MIN.finalRefl)) return;
-  var data={timestamp:new Date().toISOString(),nome:ST.name,ra:ST.ra,turma:ST.turma,bateria:ST.batt,motivoBat:document.getElementById('bReason').value,radar:ST.radar.join(', '),areaCritica:DIMS[ST.critIdx].label,reflexRadar:document.getElementById('rRefl').value,analiseCrit:document.getElementById('critQ').value,redesApoio:document.getElementById('support').value,smartS:ST.sm.s,smartM:ST.sm.m,smartA:ST.sm.a,smartR:ST.sm.r,smartT:ST.sm.t,reflexFinal:document.getElementById('finalRefl').value,xpTotal:ST.xp+50};
-  document.getElementById('overlay').classList.add('on');
-  var done=function(){ document.getElementById('overlay').classList.remove('on'); document.getElementById('successBox').style.display='block'; ST.xp+=50; document.getElementById('xpBadge').textContent=ST.xp+' XP'; showToast('🎉 Missão Completa! +50 XP'); document.getElementById('successBox').scrollIntoView({behavior:'smooth'}); };
-  if(CFG.SHEETS_URL&&CFG.SHEETS_URL!=='YOUR_GOOGLE_APPS_SCRIPT_URL_HERE'){ fetch(CFG.SHEETS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).then(done).catch(done); } else { setTimeout(done,1200); }
-}
+/* submit() removido — envio agora é automático via autoSubmit() ao chegar na tela 5 */
 
 /* ---- TOAST ---- */
 function showToast(txt){ var t=document.getElementById('toast'); document.getElementById('toastTxt').textContent=txt; t.classList.add('show'); setTimeout(function(){ t.classList.remove('show'); },3000); }
