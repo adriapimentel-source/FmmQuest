@@ -837,7 +837,7 @@ function buildCard(){
 /* ---- AUTO-SUBMIT (salva tudo até a penúltima fase) ---- */
 function autoSubmit(){
   var data={timestamp:new Date().toISOString(),nome:ST.name,ra:ST.ra,turma:ST.turma,bateria:ST.batt,motivoBat:document.getElementById('bReason').value,radar:ST.radar.join(', '),areaCritica:(ST.critIdxs||[ST.critIdx]).map(function(i){return DIMS[i].label;}).join(' e '),reflexRadar:document.getElementById('rRefl').value,analiseCrit:document.getElementById('critQ').value,redesApoio:document.getElementById('support').value,smartS:ST.sm.s,smartM:ST.sm.m,smartA:ST.sm.a,smartR:ST.sm.r,smartT:ST.sm.t,reflexFinal:'',xpTotal:ST.xp};
-  if(CFG.SHEETS_URL&&CFG.SHEETS_URL!=='YOUR_GOOGLE_APPS_SCRIPT_URL_HERE'){ fetch(CFG.SHEETS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).catch(function(){}); }
+  if(CFG.SHEETS_URL&&CFG.SHEETS_URL!=='YOUR_GOOGLE_APPS_SCRIPT_URL_HERE'){ fetch(CFG.SHEETS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(data)}).catch(function(){}); }
   // Aviso sempre visível na tela 5
 }
 
